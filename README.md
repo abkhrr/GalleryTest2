@@ -45,13 +45,23 @@ allprojects {
 ## 1. Adding Layout
 
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
     <com.adyabukhari.pixalist.PixaList
         android:id="@+id/MypixaList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:columns="FILL" />
-```
 
+</RelativeLayout>
+```
+#### Use RelativeLayout instead.
 #### You can change the columns style by defines the " app:columns='' "
 #### There are three type of columns :
 * #### FILL ( One Columns )
