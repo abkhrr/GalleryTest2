@@ -62,6 +62,7 @@ public class PixaList extends LinearLayout {
     }
 
     private void initList() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
         recyclerView.setLayoutManager(mLayoutManager);
