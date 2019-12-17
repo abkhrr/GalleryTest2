@@ -37,7 +37,7 @@ public class PixaList extends LinearLayout {
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
     private int columns;
-    private int PAGE;
+    private int page;
 
     public final static int FILL = 0;
     public final static int TWO = 1;
@@ -70,18 +70,18 @@ public class PixaList extends LinearLayout {
         switch (columns){
             case FILL:
                 init_fill();
-                loadImages(PAGE,APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
 
             case TWO:
                 initList();
-                loadImages(PAGE,APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
 
             default:
             case GRID:
                 init_grid();
-                loadImages(PAGE,APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
         }
     }
@@ -127,7 +127,6 @@ public class PixaList extends LinearLayout {
         infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
             @Override
             public void onLoadMore(int page) {
-                PAGE = page;
                 loadImages(page,APIKEY, currentQuery);
             }
         };
@@ -137,9 +136,8 @@ public class PixaList extends LinearLayout {
 
         Api = this.APIKEY;
         query = this.currentQuery;
-        this.PAGE = page;
 
-        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery,PAGE, 20).enqueue(new Callback<PixabayImageList>() {
+        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery,page, 20).enqueue(new Callback<PixabayImageList>() {
             @Override
             public void onResponse(Call<PixabayImageList> call, Response<PixabayImageList> response) {
                 if (response.isSuccessful()) addImagesToList(response.body());
