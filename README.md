@@ -25,15 +25,15 @@ android{
 }
 ```
 
-* ## Gradle ( Module App )
+## Gradle ( Module App )
 ```gradle
 implementation 'com.github.abkhrr:PixaList:1.1.1'
 implementation 'androidx.recyclerview:recyclerview:1.1.0'
 ```
 You have to Implements RecyclerView To projects.
 
-* ## Gradle ( Project App )
-### Add maven ( jitpack )
+## Gradle ( Project App )
+#### Add maven ( jitpack )
 ```gradle
 allprojects {
     repositories {
