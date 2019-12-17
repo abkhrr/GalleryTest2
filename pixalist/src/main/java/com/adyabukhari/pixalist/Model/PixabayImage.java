@@ -29,7 +29,7 @@ public class PixabayImage {
         return previewURL;
     }
 
-    public PixabayImageType getImageTypeType() {
+    public PixabayImageType getImageType() {
         return imageType;
     }
 }
