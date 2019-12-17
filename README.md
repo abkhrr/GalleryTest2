@@ -1,7 +1,7 @@
 # PixaList
 A library that use for displaying List of pixabay Image's
 
-## NOTE : IGNORE UPGRADE TO 3.7.81 ( KEEP USING Version .1.1.1 )
+#### NOTE : IGNORE UPGRADE TO 3.7.81 ( KEEP USING Version .1.1.1 )
 
 
 # Usage
@@ -15,8 +15,8 @@ implementation 'com.github.abkhrr:PixaList:1.1.1'
 ```
 
 * ## NOTE: Important
-#### This library needs dataBinding on projects
-#### You have to enable dataBinding to true to get the image displayed
+This library needs dataBinding on projects
+You have to enable dataBinding to true to get the image displayed
 ```gradle
 android{
      dataBinding {
@@ -30,7 +30,7 @@ android{
 implementation 'com.github.abkhrr:PixaList:1.1.1'
 implementation 'androidx.recyclerview:recyclerview:1.1.0'
 ```
-#### You have to Implements RecyclerView To projects.
+You have to Implements RecyclerView To projects.
 
 * ## Gradle ( Project App )
 ### Add maven ( jitpack )
@@ -61,16 +61,16 @@ allprojects {
 
 </RelativeLayout>
 ```
-#### Use RelativeLayout instead.
-#### You can change the columns style by defines the " app:columns=' ' "
-#### There are three type of columns :
-* #### FILL ( One Columns )
-* #### TWO ( Two Columns )
-* #### GRID ( Three Columns )
+Use RelativeLayout instead.
+You can change the columns style by defines the " app:columns=' ' "
+There are three type of columns :
+* FILL ( One Columns )
+* TWO ( Two Columns )
+* GRID ( Three Columns )
 
 ## 2. Defines in activity
 
-#### After defines the layout you can defines in your activity :
+After defines the layout you can defines in your activity :
 
 ```java
 
@@ -85,7 +85,7 @@ PixaList pixaList = (PixaList) findViewById(R.id.MypixaList);
         pixaList.StartPixabayList();
 ```
 
-### You can put the APIKEY and query in String ( values/string ) or directly in your activity.
+#### You can put the APIKEY and query in String ( values/string ) or directly in your activity.
 
 ## 3. Manifest
 ```xml
