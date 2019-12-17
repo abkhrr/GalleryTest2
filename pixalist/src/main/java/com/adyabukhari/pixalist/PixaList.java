@@ -1,6 +1,7 @@
 package com.adyabukhari.pixalist;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -35,6 +36,11 @@ public class PixaList extends LinearLayout {
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
     private int PAGE;
+    private int columns;
+
+    public final static int FILL = 0;     // 宫格布局
+    public final static int TWO = 1;     // 全填充布局
+    public final static int GRID = 2;     // 全填充布局
 
     public PixaList(Context context) {
         super(context);
@@ -43,6 +49,8 @@ public class PixaList extends LinearLayout {
 
     public PixaList(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PixaList);
+        this.columns = typedArray.getInt(R.styleable.PixaList_columns, GRID);
         init(context);
     }
 
@@ -57,18 +65,45 @@ public class PixaList extends LinearLayout {
     }
 
     public void StartPixabayList(){
-        initList();
-        loadImages(APIKEY,currentQuery);
-    }
 
-    private void initList() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
-        recyclerView.setLayoutManager(mLayoutManager);
         pixabayImageList = new ArrayList<>();
         pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
         recyclerView.setAdapter(pixabayAdapter);
+
+        switch (columns){
+            case FILL:
+                init_fill();
+                loadImages(APIKEY,currentQuery);
+                break;
+
+            case TWO:
+                initList();
+                loadImages(APIKEY,currentQuery);
+                break;
+
+            default:
+            case GRID:
+                init_grid();
+                loadImages(APIKEY,currentQuery);
+                break;
+        }
+    }
+
+    private void init_fill() {
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 1);
+        recyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    private void initList() {
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    private void init_grid() {
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 3);
+        recyclerView.setLayoutManager(mLayoutManager);
     }
 
     private void loadImages(String Api, String query) {

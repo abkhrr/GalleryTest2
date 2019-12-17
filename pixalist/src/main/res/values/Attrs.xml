@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="pixaList">
-
+    <declare-styleable name="PixaList">
+        <attr name="columns" format="enum">
+            <enum value="0" name="FILL"/>
+            <enum value="1" name="TWO"/>
+            <enum value="2" name="GRID"/>
+        </attr>
     </declare-styleable>
 </resources>
