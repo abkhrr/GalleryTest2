@@ -86,3 +86,10 @@ PixaList pixaList = (PixaList) findViewById(R.id.MypixaList);
 ```
 
 ### You can put the APIKEY and query in String ( values/string ) or directly in your activity.
+
+## 3. Manifest
+```xml
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+```
+Since this library call an api, you have to define permission ( internet and network_state ) to get Images List
