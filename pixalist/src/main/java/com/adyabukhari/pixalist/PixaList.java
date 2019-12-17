@@ -31,7 +31,7 @@ public class PixaList extends LinearLayout {
     private PixabayAdapter pixabayAdapter;
     private InfiniteScrollable infiniteScrollable;
     private RecyclerView recyclerView;
-    private String currentQuery;
+    public String currentQuery = "CURRENT_QUERY";
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
 
@@ -55,47 +55,33 @@ public class PixaList extends LinearLayout {
         inflate(context, R.layout.main_layout, this);
     }
 
-    public void StartPixabayList( String Api, String query ){
-        this.APIKEY = Api;
-        this.currentQuery = query;
-        query = "Red Cars";
+    public void StartPixabayList(){
         initList();
     }
 
     private void initList() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
         recyclerView.setHasFixedSize(true);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
+        recyclerView.setLayoutManager(mLayoutManager);
         pixabayImageList = new ArrayList<>();
-
-        SnapHelper snapHelper = new LinearSnapHelper();
-        if (recyclerView.getOnFlingListener() == null) {
-            snapHelper.attachToRecyclerView(recyclerView);
-        }
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
-        PixabayAdapter pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
+        pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
         recyclerView.setAdapter(pixabayAdapter);
-        initInfiniteScrollListener(gridLayoutManager);
+        initInfiniteScrollListener(mLayoutManager);
     }
 
     private void initInfiniteScrollListener(LinearLayoutManager mLayoutManager) {
         infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
             @Override
             public void onLoadMore(int page) {
-                loadImages(page, currentQuery, APIKEY);
+                loadImages(page);
             }
         };
         recyclerView.addOnScrollListener(infiniteScrollable);
     }
 
-    private void loadImages(int page, String query, String Apikey) {
+    private void loadImages(int page) {
 
-        Apikey = this.APIKEY;
-        query = this.currentQuery;
-
-        PixabayService.createPixabayService().getImageResults(Apikey, query, page, 1000).enqueue(new Callback<PixabayImageList>() {
+        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, page, 100).enqueue(new Callback<PixabayImageList>() {
             @Override
             public void onResponse(Call<PixabayImageList> call, Response<PixabayImageList> response) {
                 if (response.isSuccessful()) addImagesToList(response.body());
