@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class InfiniteScrollable extends RecyclerView.OnScrollListener  {
+
     private int previousTotal = 0;
     private boolean loading = true;
     private int current_page = 1;
