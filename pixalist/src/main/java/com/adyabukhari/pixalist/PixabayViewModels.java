@@ -1,13 +1,19 @@
 package com.adyabukhari.pixalist;
 
-import android.content.Context;
 import android.widget.ImageView;
-
 import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 
 import com.adyabukhari.pixalist.Model.PixabayImage;
 import com.bumptech.glide.Glide;
+
+/**
+ * Created by Abkhrr on 17/12/2019.
+ *
+ * Email: bukhariadbuk@gmail.com
+ * GitHub: https://github.com/abkhrr
+ *
+ */
 
 public class PixabayViewModels extends BaseObservable {
 
@@ -17,9 +23,12 @@ public class PixabayViewModels extends BaseObservable {
         this.pixabayImage = pixabayImage;
     }
 
+    // Getting Image URL (models)
     public String getImageUrl() {
         return pixabayImage.getPreviewURL();
     }
+
+    // Binding Image From Layout
 
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {

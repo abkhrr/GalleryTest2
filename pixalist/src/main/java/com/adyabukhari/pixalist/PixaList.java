@@ -3,16 +3,13 @@ package com.adyabukhari.pixalist;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 import com.adyabukhari.pixalist.API.PixabayService;
 import com.adyabukhari.pixalist.Model.PixabayImage;
@@ -27,6 +24,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Created by Abkhrr on 17/12/2019.
+ *
+ * Email: bukhariadbuk@gmail.com
+ * GitHub: https://github.com/abkhrr
+ *
+ */
+
 public class PixaList extends LinearLayout {
 
     private List<PixabayImage> pixabayImageList;
@@ -38,6 +43,7 @@ public class PixaList extends LinearLayout {
     public String APIKEY = "YOUR_API_KEY";
     private int columns;
 
+    // STYLE
     public final static int FILL = 0;
     public final static int TWO = 1;
     public final static int GRID = 2;
@@ -46,6 +52,8 @@ public class PixaList extends LinearLayout {
         super(context);
         init(context);
     }
+
+    // Set Default ATTRS
 
     public PixaList(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -64,26 +72,33 @@ public class PixaList extends LinearLayout {
         inflate(context, R.layout.main_layout, this);
     }
 
+    // Make public void to populate image from pixabay
+    // Make public to set Columns ( FILL , GRID , COLUMNS )
+
     public void StartPixabayList(){
+
+        // Set Case from layout choosen
 
         switch (columns){
             case FILL:
-                init_fill();
+                init_fill(); // STYLE FILL ( 1 COLUMNS )
                 loadImages(1,APIKEY,currentQuery);
                 break;
 
             case TWO:
-                initList();
+                initList(); // STYLE TWO ( 2 COLUMNS )
                 loadImages(1,APIKEY,currentQuery);
                 break;
 
             default:
             case GRID:
-                init_grid();
+                init_grid(); // STYLE GRID ( 3 COLUMNS )
                 loadImages(1,APIKEY,currentQuery);
                 break;
         }
     }
+
+    // Set Case from layout choosen
 
     private void init_fill() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
@@ -122,6 +137,7 @@ public class PixaList extends LinearLayout {
 
     }
 
+    // Making RecyclerView Loads more when scroll
     private void initInfiniteScrollListener(LinearLayoutManager mLayoutManager) {
         infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
             @Override
@@ -130,6 +146,8 @@ public class PixaList extends LinearLayout {
             }
         };
     }
+
+    // Set API and call the API from and for pixabay.com
 
     private void loadImages(int page,String Api, String query) {
 
@@ -148,6 +166,8 @@ public class PixaList extends LinearLayout {
             }
         });
     }
+
+    // Adding Image to recyclerView ( notify the recyclerView )
 
     private void addImagesToList(PixabayImageList response) {
         int position = pixabayImageList.size();

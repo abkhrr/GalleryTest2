@@ -17,6 +17,14 @@ import java.util.List;
 
 public class PixabayAdapter extends RecyclerView.Adapter<PixabayAdapter.PixabayImageViewHolder> {
 
+    /**
+     * Created by Abkhrr on 17/12/2019.
+     *
+     * Email: bukhariadbuk@gmail.com
+     * GitHub: https://github.com/abkhrr
+     *
+     */
+
     private List<PixabayImage> pixabayImageList;
     private Context context;
     private RecyclerView recyclerView;
@@ -31,12 +39,16 @@ public class PixabayAdapter extends RecyclerView.Adapter<PixabayAdapter.PixabayI
     @Override
     public PixabayImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         return new PixabayAdapter.PixabayImageViewHolder(LayoutInflater.from(viewGroup.getContext())
+
+                // Inflating Items View to RecyclerView
                 .inflate(R.layout.pixabay_item, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull PixabayImageViewHolder holder, int position) {
 
+
+        // Defines Binding and view models
         holder.pixabayImageItemBinding.setViewmodel(new PixabayViewModels(pixabayImageList.get(position)));
     }
 

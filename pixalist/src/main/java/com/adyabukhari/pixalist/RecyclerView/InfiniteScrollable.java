@@ -5,11 +5,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class InfiniteScrollable extends RecyclerView.OnScrollListener  {
 
+    /**
+     * Created by Abkhrr on 17/12/2019.
+     *
+     * Email: bukhariadbuk@gmail.com
+     * GitHub: https://github.com/abkhrr
+     *
+     */
+
     private int previousTotal = 0;
     private boolean loading = true;
-    private int current_page = 1;
+    private int image_page = 1;
 
     private final LinearLayoutManager mLinearLayoutManager;
+
+    // Set The Infinite Scroll
 
     public InfiniteScrollable(LinearLayoutManager linearLayoutManager) {
         this.mLinearLayoutManager = linearLayoutManager;
@@ -19,29 +29,23 @@ public abstract class InfiniteScrollable extends RecyclerView.OnScrollListener  
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
 
-        int visibleItemCount = recyclerView.getChildCount();
-        int totalItemCount = mLinearLayoutManager.getItemCount();
-        int firstVisibleItem = mLinearLayoutManager.findFirstVisibleItemPosition();
+        int VisibleCount = recyclerView.getChildCount();
+        int totalCount = mLinearLayoutManager.getItemCount();
+        int firstVisibleImage = mLinearLayoutManager.findFirstVisibleItemPosition();
 
-        if (loading && (totalItemCount > previousTotal)) {
+        if (loading && (VisibleCount > previousTotal)) {
             loading = false;
-            previousTotal = totalItemCount;
+            previousTotal = totalCount;
         }
 
         int visibleThreshold = 5;
-        if (!loading && (totalItemCount - visibleItemCount)
-                <= (firstVisibleItem + visibleThreshold)) {
-            current_page++;
-            onLoadMore(current_page);
+        if (!loading && (totalCount - VisibleCount)
+                <= (firstVisibleImage + visibleThreshold)) {
+            image_page++;
+            onLoadMore(image_page);
             loading = true;
         }
     }
 
     public abstract void onLoadMore(int currentPage);
-
-    public void resetCurrentPage() {
-        current_page = 1;
-        previousTotal = 0;
-        loading = true;
-    }
 }

@@ -2,6 +2,14 @@ package com.adyabukhari.pixalist.Model;
 
 import java.util.List;
 
+/**
+ * Created by Abkhrr on 17/12/2019.
+ *
+ * Email: bukhariadbuk@gmail.com
+ * GitHub: https://github.com/abkhrr
+ *
+ */
+
 public class PixabayImageList {
     private int total;
     private int totalHits;
