@@ -1,8 +1,10 @@
-# (-) PixaList
+# PixaList
 A library that use for displaying List of pixabay Image's
 
+## NOTE : IGNORE UPGRADE TO 3.7.81 ( KEEP USING Version .1.1.1 )
 
-# (-) Usage
+
+# Usage
 If you dont have API_KEY, Please get API_KEY from [https://pixabay.com/api/docs/].
 
 * ## Gradle ( Module App )
