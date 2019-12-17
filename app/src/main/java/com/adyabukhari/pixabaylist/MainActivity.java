@@ -8,8 +8,8 @@ import com.adyabukhari.pixalist.PixaList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String API_KEY ="14646935-c08f547623e6f679a2c28d594";
-    private String query = "fruits";
+    private String API_KEY ="14658201-2fd4b3bfec2ea493e9ac398b8";
+    private String query = "balls";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
