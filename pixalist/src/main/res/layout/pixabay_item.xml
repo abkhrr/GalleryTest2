@@ -13,14 +13,13 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="200dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="5dp"
-            app:imageUrl="@{viewmodel.imageUrl}"/>
+            android:scaleType="fitXY"
+            app:imageUrl="@{viewmodel.imageUrl}" />
 
     </LinearLayout>
 </layout>

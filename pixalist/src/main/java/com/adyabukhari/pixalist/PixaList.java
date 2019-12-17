@@ -30,17 +30,15 @@ public class PixaList extends LinearLayout {
 
     private List<PixabayImage> pixabayImageList;
     private PixabayAdapter pixabayAdapter;
-    private InfiniteScrollable infiniteScrollable;
     private RecyclerView recyclerView;
     public String currentQuery = "CURRENT_QUERY";
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
-    private int PAGE;
     private int columns;
 
-    public final static int FILL = 0;     // 宫格布局
-    public final static int TWO = 1;     // 全填充布局
-    public final static int GRID = 2;     // 全填充布局
+    public final static int FILL = 0;
+    public final static int TWO = 1;
+    public final static int GRID = 2;
 
     public PixaList(Context context) {
         super(context);
