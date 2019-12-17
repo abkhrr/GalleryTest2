@@ -34,6 +34,7 @@ public class PixaList extends LinearLayout {
     public String currentQuery = "CURRENT_QUERY";
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
+    private int PAGE;
 
     public PixaList(Context context) {
         super(context);
@@ -57,6 +58,7 @@ public class PixaList extends LinearLayout {
 
     public void StartPixabayList(){
         initList();
+        loadImages(APIKEY,currentQuery);
     }
 
     private void initList() {
@@ -66,22 +68,14 @@ public class PixaList extends LinearLayout {
         pixabayImageList = new ArrayList<>();
         pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
         recyclerView.setAdapter(pixabayAdapter);
-        initInfiniteScrollListener(mLayoutManager);
     }
 
-    private void initInfiniteScrollListener(LinearLayoutManager mLayoutManager) {
-        infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
-            @Override
-            public void onLoadMore(int page) {
-                loadImages(page);
-            }
-        };
-        recyclerView.addOnScrollListener(infiniteScrollable);
-    }
+    private void loadImages(String Api, String query) {
 
-    private void loadImages(int page) {
+        Api = this.APIKEY;
+        query = this.currentQuery;
 
-        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, page, 100).enqueue(new Callback<PixabayImageList>() {
+        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, 100).enqueue(new Callback<PixabayImageList>() {
             @Override
             public void onResponse(Call<PixabayImageList> call, Response<PixabayImageList> response) {
                 if (response.isSuccessful()) addImagesToList(response.body());
