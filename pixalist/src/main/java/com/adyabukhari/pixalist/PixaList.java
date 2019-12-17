@@ -118,7 +118,7 @@ public class PixaList extends LinearLayout {
         Api = this.APIKEY;
         query = this.currentQuery;
 
-        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, 100).enqueue(new Callback<PixabayImageList>() {
+        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, 10000).enqueue(new Callback<PixabayImageList>() {
             @Override
             public void onResponse(Call<PixabayImageList> call, Response<PixabayImageList> response) {
                 if (response.isSuccessful()) addImagesToList(response.body());
