@@ -3,6 +3,7 @@ package com.adyabukhari.pixalist;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class PixaList extends LinearLayout {
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
     private int columns;
+    private InfiniteScrollable infiniteScrollable;
+    private int page;
 
     public final static int FILL = 0;
     public final static int TWO = 1;
@@ -67,18 +70,18 @@ public class PixaList extends LinearLayout {
         switch (columns){
             case FILL:
                 init_fill();
-                loadImages(APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
 
             case TWO:
                 initList();
-                loadImages(APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
 
             default:
             case GRID:
                 init_grid();
-                loadImages(APIKEY,currentQuery);
+                loadImages(page,APIKEY,currentQuery);
                 break;
         }
     }
@@ -111,14 +114,27 @@ public class PixaList extends LinearLayout {
         recyclerView.setAdapter(pixabayAdapter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 3);
         recyclerView.setLayoutManager(mLayoutManager);
+        initInfiniteScrollListener(mLayoutManager);
     }
 
-    private void loadImages(String Api, String query) {
+    private void initInfiniteScrollListener(LinearLayoutManager mLayoutManager) {
+        infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
+            @Override
+            public void onLoadMore(int page) {
+                loadImages(page,APIKEY,currentQuery);
+            }
+        };
+        recyclerView.addOnScrollListener(infiniteScrollable);
+    }
+
+
+    private void loadImages(int page,String Api, String query) {
 
         Api = this.APIKEY;
         query = this.currentQuery;
+        this.page = page;
 
-        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery, 10000).enqueue(new Callback<PixabayImageList>() {
+        PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery,page, 100).enqueue(new Callback<PixabayImageList>() {
             @Override
             public void onResponse(Call<PixabayImageList> call, Response<PixabayImageList> response) {
                 if (response.isSuccessful()) addImagesToList(response.body());
