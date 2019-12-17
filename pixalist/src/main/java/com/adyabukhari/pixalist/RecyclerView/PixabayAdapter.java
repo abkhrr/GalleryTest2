@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.adyabukhari.pixalist.Model.PixabayImage;
-import com.adyabukhari.pixalist.Model.PixabayViewModels;
+import com.adyabukhari.pixalist.PixabayViewModels;
 import com.adyabukhari.pixalist.R;
 import com.adyabukhari.pixalist.databinding.PixabayItemBinding;
 

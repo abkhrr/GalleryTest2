@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.adyabukhari.pixalist.Model.PixabayViewModels"/>
+            type="com.adyabukhari.pixalist.PixabayViewModels"/>
     </data>
 
     <LinearLayout

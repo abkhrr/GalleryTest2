@@ -1,10 +1,11 @@
-package com.adyabukhari.pixalist.Model;
+package com.adyabukhari.pixalist;
 
 import android.widget.ImageView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 
+import com.adyabukhari.pixalist.Model.PixabayImage;
 import com.bumptech.glide.Glide;
 
 public class PixabayViewModels extends BaseObservable {
