@@ -7,6 +7,8 @@ A library that use for displaying List of pixabay Image's
 # Usage
 If you dont have API_KEY, Please get API_KEY from [https://pixabay.com/api/docs/].
 
+
+
 * ## Gradle ( Module App )
 ```gradle
 implementation 'com.github.abkhrr:PixaList:1.1.1'
@@ -26,7 +28,9 @@ android{
 * ## Gradle ( Module App )
 ```gradle
 implementation 'com.github.abkhrr:PixaList:1.1.1'
+implementation 'androidx.recyclerview:recyclerview:1.1.0'
 ```
+#### You have to Implements RecyclerView To projects.
 
 * ## Gradle ( Project App )
 ### Add maven ( jitpack )
