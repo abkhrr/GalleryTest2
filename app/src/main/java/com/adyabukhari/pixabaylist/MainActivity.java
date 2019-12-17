@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         PixaList pixaList = (PixaList) findViewById(R.id.MypixaList);
-        pixaList.StartPixabayList(API_KEY, query);
+        pixaList.APIKEY = API_KEY;
+        pixaList.currentQuery = query;
+        pixaList.StartPixabayList();
     }
 }
