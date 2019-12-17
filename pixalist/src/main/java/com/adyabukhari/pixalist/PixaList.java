@@ -95,6 +95,7 @@ public class PixaList extends LinearLayout {
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 1);
         recyclerView.setLayoutManager(mLayoutManager);
         initInfiniteScrollListener(mLayoutManager);
+        recyclerView.addOnScrollListener(infiniteScrollable);
     }
 
     private void initList() {
@@ -106,6 +107,7 @@ public class PixaList extends LinearLayout {
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         initInfiniteScrollListener(mLayoutManager);
+        recyclerView.addOnScrollListener(infiniteScrollable);
     }
 
     private void init_grid() {
@@ -117,6 +119,8 @@ public class PixaList extends LinearLayout {
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 3);
         recyclerView.setLayoutManager(mLayoutManager);
         initInfiniteScrollListener(mLayoutManager);
+        recyclerView.addOnScrollListener(infiniteScrollable);
+
     }
 
     private void initInfiniteScrollListener(LinearLayoutManager mLayoutManager) {
@@ -126,7 +130,6 @@ public class PixaList extends LinearLayout {
                 loadImages(page,APIKEY, currentQuery);
             }
         };
-        recyclerView.addOnScrollListener(infiniteScrollable);
     }
 
     private void loadImages(int page,String Api, String query) {
