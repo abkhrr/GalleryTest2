@@ -37,7 +37,7 @@ public class PixaList extends LinearLayout {
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
     private int columns;
-    private int page;
+    private int pages;
 
     public final static int FILL = 0;
     public final static int TWO = 1;
@@ -70,18 +70,18 @@ public class PixaList extends LinearLayout {
         switch (columns){
             case FILL:
                 init_fill();
-                loadImages(page,APIKEY,currentQuery);
+                loadImages(pages,APIKEY,currentQuery);
                 break;
 
             case TWO:
                 initList();
-                loadImages(page,APIKEY,currentQuery);
+                loadImages(pages,APIKEY,currentQuery);
                 break;
 
             default:
             case GRID:
                 init_grid();
-                loadImages(page,APIKEY,currentQuery);
+                loadImages(pages,APIKEY,currentQuery);
                 break;
         }
     }
@@ -127,6 +127,7 @@ public class PixaList extends LinearLayout {
         infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
             @Override
             public void onLoadMore(int page) {
+                pages = page;
                 loadImages(page,APIKEY, currentQuery);
             }
         };
