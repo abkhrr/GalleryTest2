@@ -7,13 +7,6 @@ A library that use for displaying List of pixabay Image's
 # Usage
 If you dont have API_KEY, Please get API_KEY from [https://pixabay.com/api/docs/].
 
-
-
-* ## Gradle ( Module App )
-```gradle
-implementation 'com.github.abkhrr:PixaList:1.1.1'
-```
-
 * ## NOTE: Important
 This library needs dataBinding on projects
 You have to enable dataBinding to true to get the image displayed
