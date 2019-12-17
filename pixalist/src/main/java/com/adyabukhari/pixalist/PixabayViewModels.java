@@ -1,5 +1,6 @@
 package com.adyabukhari.pixalist;
 
+import android.content.Context;
 import android.widget.ImageView;
 
 import androidx.databinding.BaseObservable;
@@ -14,6 +15,10 @@ public class PixabayViewModels extends BaseObservable {
 
     public PixabayViewModels(PixabayImage pixabayImage) {
         this.pixabayImage = pixabayImage;
+    }
+
+    public String getImageUrl() {
+        return pixabayImage.getPreviewURL();
     }
 
     @BindingAdapter({"bind:imageUrl"})
