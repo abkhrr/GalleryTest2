@@ -30,7 +30,7 @@ public class PixabayAdapter extends RecyclerView.Adapter<PixabayAdapter.PixabayI
     @NonNull
     @Override
     public PixabayImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        return new PixabayAdapter.PixabayImageViewHolder(LayoutInflater.from(context)
+        return new PixabayAdapter.PixabayImageViewHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.pixabay_item, viewGroup, false));
     }
 
