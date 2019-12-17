@@ -37,7 +37,7 @@ public class PixaList extends LinearLayout {
     private Context context;
     public String APIKEY = "YOUR_API_KEY";
     private int columns;
-    private int PAGE;
+    private int PAGE = 1;
 
     public final static int FILL = 0;
     public final static int TWO = 1;
@@ -127,6 +127,7 @@ public class PixaList extends LinearLayout {
         infiniteScrollable = new InfiniteScrollable(mLayoutManager) {
             @Override
             public void onLoadMore(int page) {
+                page = PAGE;
                 loadImages(page,APIKEY, currentQuery);
             }
         };
@@ -136,7 +137,7 @@ public class PixaList extends LinearLayout {
 
         Api = this.APIKEY;
         query = this.currentQuery;
-        this.PAGE = page;
+        page = this.PAGE;
 
         PixabayService.createPixabayService().getImageResults(APIKEY, currentQuery,PAGE, 20).enqueue(new Callback<PixabayImageList>() {
             @Override
@@ -156,5 +157,4 @@ public class PixaList extends LinearLayout {
         pixabayImageList.addAll(response.getHits());
         pixabayAdapter.notifyItemRangeInserted(position, position + 20);
     }
-
 }
