@@ -66,12 +66,6 @@ public class PixaList extends LinearLayout {
 
     public void StartPixabayList(){
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
-        recyclerView.setHasFixedSize(true);
-        pixabayImageList = new ArrayList<>();
-        pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
-        recyclerView.setAdapter(pixabayAdapter);
-
         switch (columns){
             case FILL:
                 init_fill();
@@ -92,16 +86,31 @@ public class PixaList extends LinearLayout {
     }
 
     private void init_fill() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
+        recyclerView.setHasFixedSize(true);
+        pixabayImageList = new ArrayList<>();
+        pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
+        recyclerView.setAdapter(pixabayAdapter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 1);
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
     private void initList() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
+        recyclerView.setHasFixedSize(true);
+        pixabayImageList = new ArrayList<>();
+        pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
+        recyclerView.setAdapter(pixabayAdapter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 2);
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
     private void init_grid() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pixabayGallery);
+        recyclerView.setHasFixedSize(true);
+        pixabayImageList = new ArrayList<>();
+        pixabayAdapter = new PixabayAdapter(pixabayImageList,context,recyclerView);
+        recyclerView.setAdapter(pixabayAdapter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this.context, 3);
         recyclerView.setLayoutManager(mLayoutManager);
     }
