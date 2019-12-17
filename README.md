@@ -62,7 +62,7 @@ allprojects {
 </RelativeLayout>
 ```
 #### Use RelativeLayout instead.
-#### You can change the columns style by defines the " app:columns='' "
+#### You can change the columns style by defines the " app:columns=' ' "
 #### There are three type of columns :
 * #### FILL ( One Columns )
 * #### TWO ( Two Columns )
