@@ -69,11 +69,11 @@ After defines the layout you can defines in your activity :
 
 
 
-private String API_KEY = "14658201-2fd4b3bfec2ea493e9ac398b8"; // NOTE : YOU CAN PUT ON Values/String. THIS IS JUST EXAMPLE
+private String API_KEY = "YOUR_API_KEY"; // NOTE : YOU CAN PUT ON Values/String. THIS IS JUST EXAMPLE
 private String query = "red cars"; // Defines type of images query
  
 PixaList pixaList = (PixaList) findViewById(R.id.MypixaList);
-        pixaList.APIKEY = 'YOUR_API_KEY';
+        pixaList.APIKEY = 'API_KEY';
         pixaList.currentQuery = 'query';
         pixaList.StartPixabayList();
 ```
